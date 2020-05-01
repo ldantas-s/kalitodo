@@ -1,13 +1,22 @@
-body{
+body {
+    margin: auto;
+    font-family: 'Titillium Web', sans-serif;
+    color: white;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #5f4d93;
+}
+
+body:-webkit-scrollbar { 
+    display: none; 
+}
+
+p {
+    font-size: 10px;
+    text-align: center;
     padding: 0;
     margin: 0;
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #935d8c;
-	background-image: -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-	background-image: -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-	background-image: -ms-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-	background-image: linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-    color: white;
 }
 
 a {
@@ -28,9 +37,8 @@ a {
 
 .header{
     width: 380px;
-    height:200px;
-    background-image: url('/public/img/bg2.jpg');
-    background-size: 100% 200%;
+    height: 200px;
+    background-image: url('/public/img/bg2.gif');
     background-repeat: no-repeat;
     border-radius: 15px 15px 0 0;
     position: relative;
@@ -62,7 +70,7 @@ a {
 .content{
     width:380px;
     height: 350px;
-    max-height:350px;
+    max-height:600px;
     background-color: #24292E;
     overflow: auto;
 }
