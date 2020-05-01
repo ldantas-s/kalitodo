@@ -25,22 +25,23 @@ a {
 }
 
 .container{
-    padding:10px;
-    width:380px;
-    margin:0 auto;
+    margin: auto;
 }
 
 .copyright {
     text-align: center;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .header{
-    width: 380px;
-    height: 200px;
     background-image: url('/public/img/bg2.gif');
     background-repeat: no-repeat;
     border-radius: 15px 15px 0 0;
+    width: 330px;
+    height: 200px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
     position: relative;
 }
 .clear{
@@ -68,11 +69,12 @@ a {
 }
 
 .content{
-    width:380px;
-    height: 350px;
-    max-height:600px;
+    width:350px;
+    height: 300px;
+    max-height:500px;
     background-color: #24292E;
     overflow: auto;
+    margin: auto;
 }
 .content::-webkit-scrollbar { 
     display: none; 
@@ -82,7 +84,7 @@ a {
     margin:0;
 }
 .item{
-    width:380px;
+    width:350px;
     height: 45px;
     min-height: 45px;
     position: relative;
@@ -130,11 +132,12 @@ a {
 
 .add-to-do{
     position: relative;
-    width: 360px;
-    height:40px;
+    width: 330px;
+    height:30px;
     background-color: #FFF;
     padding: 10px;
     border-top: 1px solid rgba(0,0,0,0.1);
+    margin: auto;
 }
 .add-to-do i{
     position: absolute;
@@ -146,7 +149,7 @@ a {
     position: absolute;
     left: 50px;
     height: 35px;
-    width: 310px;
+    width: 300px;
     background-color: transparent;
     border: none;
     font-size: 20px;
@@ -172,4 +175,3 @@ a {
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
 }
-
