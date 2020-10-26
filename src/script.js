@@ -2,6 +2,7 @@ const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
+const btnAddTodo = document.querySelector('.btn-add');
 
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
@@ -22,7 +23,7 @@ if (data) {
 
 function loadList(array) {
   array.forEach(function (item) {
-    addToDo(item.name, item.id, item.done, item.trash);
+    showTodo(item.name, item.id, item.done, item.trash);
   });
 }
 
@@ -36,7 +37,7 @@ const today = new Date();
 
 dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 
-function addToDo(toDo, id, done, trash) {
+function showTodo(toDo, id, done, trash) {
   if (trash) {
     return;
   }
@@ -56,27 +57,43 @@ function addToDo(toDo, id, done, trash) {
   list.insertAdjacentHTML(position, item);
 }
 
-document.addEventListener("keyup", function (even) {
-  if (event.keyCode == 13) {
-    const toDo = input.value;
-
-    if (toDo) {
-      addToDo(toDo, id, false, false);
-
-      LIST.push({
-        name: toDo,
-        id: id,
-        done: false,
-        trash: false,
-      });
-
-      localStorage.setItem("TODO", JSON.stringify(LIST));
-
-      id++;
-    }
-    input.value = "";
+// Update
+document.addEventListener("keyup", function (event) {
+  // KeyboardEvent.keyCode is Deprecated 
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+  if (event.key === 'Enter') {
+    addTodo();
   }
 });
+
+// Add: Action add to do of button
+btnAddTodo.addEventListener('click', function(event) {
+
+  addTodo();
+
+});
+
+// Refactor: Show todo in DOM and add todo in localstorage
+function addTodo() {
+  const toDo = input.value;
+
+  if (toDo) {
+    showTodo(toDo, id, false, false);
+
+    LIST.push({
+      name: toDo,
+      id: id,
+      done: false,
+      trash: false,
+    });
+
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+
+    id++;
+  }
+  input.value = "";
+}
+
 
 function completeToDo(element) {
   element.classList.toggle(CHECK);
@@ -92,13 +109,15 @@ function removeToDo(element) {
   LIST[element.id].trash = true;
 }
 
+// Fix error
 list.addEventListener("click", function (event) {
   const element = event.target;
-  const elementJob = element.attributes.job.value;
+  // correct error that was showing in the console when clicking on the list element, where it looks for the job attribute
+  const elementJob = element.attributes.job ? element.attributes.job.value:null;
 
-  if (elementJob == "complete") {
+  if (elementJob === "complete") {
     completeToDo(element);
-  } else if (elementJob == "delete") {
+  } else if (elementJob === "delete") {
     removeToDo(element);
   }
 
